@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_REFERER} ^$
+
+RewriteRule .(ttf|eot|svg|woff)$ – [F]

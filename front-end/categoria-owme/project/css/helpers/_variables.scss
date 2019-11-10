@@ -1,0 +1,35 @@
+$highdensity:     "only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+                  "only screen and (min--moz-device-pixel-ratio: 1.5)",
+                  "only screen and (-o-min-device-pixel-ratio: 3/2)",
+                  "only screen and (min-device-pixel-ratio: 1.5)";
+$mobile:          "only screen and (max-width: 529px)";
+$tablet:          "only screen and (min-width: 530px) and (max-width: 949px)";
+$desktop:         "only screen and (min-width: 950px) and (max-width: 1128px)";
+$desktop-l:       "only screen and (min-width: 1129px) and (max-width: 1280px)";
+$desktop-xl:      "only screen and (min-width: 1281px)";
+$justdesktop:     "only screen and (min-width: 1024px)";
+$max-width-1440:  "only screen and (max-width: 1440px)";
+$max-width-1366:  "only screen and (max-width: 1366px)";
+$max-width-1280:  "only screen and (max-width: 1280px)";
+$max-width-1024:  "only screen and (max-width: 1024px)";
+$max-width-994:   "only screen and (max-width: 994px)";
+$max-width-960:   "only screen and (max-width: 960px)";
+$max-width-768:   "only screen and (max-width: 768px)";
+$max-width-640:   "only screen and (max-width: 640px)";
+$max-width-480:   "only screen and (max-width: 480px)";
+$max-width-360:   "only screen and (max-width: 360px)";
+
+$min-width-1440:  "only screen and (max-width: 1440px)";
+$min-width-1366:  "only screen and (max-width: 1366px)";
+$min-width-1280:  "only screen and (max-width: 1280px)";
+$min-width-1024:  "only screen and (max-width: 1024px)";
+$min-width-994:   "only screen and (max-width: 994px)";
+$min-width-960:   "only screen and (max-width: 960px)";
+$min-width-768:   "only screen and (max-width: 768px)";
+$min-width-640:   "only screen and (max-width: 640px)";
+$min-width-480:   "only screen and (max-width: 480px)";
+$min-width-360:   "only screen and (max-width: 360px)";
+
+/* CORES */
+$gray: #333333;
+$green: #83A381;
