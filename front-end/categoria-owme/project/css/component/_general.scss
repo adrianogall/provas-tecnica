@@ -194,7 +194,7 @@ ul.list-products{
         min-height: 150px;
         width: 25%;
         display: block;
-        padding: 0 15px;
+        padding: 0;
         transition: transform-transition(.2s);
 
         .cont{
@@ -272,6 +272,8 @@ ul.list-products{
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                cursor: pointer;
+                
                 @include font-transition($timeT1);
 
                 &:hover,&.active{

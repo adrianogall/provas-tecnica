@@ -54,21 +54,19 @@
 			<div id="filter">							 
 				<h1> Sapatos</h1>
 				<div class="filter-list">
-					<form name="form-filter" method="get" action="javascript:void(0)">
-						<div class="form-group">
-							<select>
-								<option value="val-desc"> Maior Valor</option>
-								<option value="val-asc"> Menor Valor</option>
-								<option value="name-asc"> A-Z</option>
-								<option value="name-desc"> Z-A</option>
-							</select>
-						</div>
-					</form>
+					<div class="form-group">
+						<select id="change-filter" onchange="getStartListProd(this.value,1);">
+							<option value="valor-desc"> Maior Valor</option>
+							<option value="valor-asc"> Menor Valor</option>
+							<option value="name-asc"> A-Z</option>
+							<option value="name-desc"> Z-A</option>
+						</select>
+					</div>
 				</div>					
 			</div>
 
 			<div id="products">
-				<ul class="list-products">
+				<ul id="list-products" class="list-products">
 					<li>
 						<div class="cont">
 							<a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
@@ -157,7 +155,7 @@
 	<footer id="footer" class="base-content">
 		<div class="wrapper">
 			<div id="pag-prod">
-				<ul>
+				<ul id="pag-prod-nav">
 					<li class="active"> <span>1</span></li>
 					<li><a href="" data-value="1">2</a></li>
 					<li><a href="" data-value="2">3</a></li>						
