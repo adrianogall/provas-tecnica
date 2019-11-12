@@ -4,12 +4,30 @@
 ###########################################*/
 
 
+//Busca os parâmetros da url para executar alistagem de produtos
+const getParameterUrl = () => {
+    
+    let query = location.search.slice(1),
+        partes = query.split('&'),
+        data = {};
+
+    partes.forEach(parte => {
+        if(parte != ''){
+            let chaveValor = parte.split('=') 
+                chave = chaveValor[0],
+                valor = chaveValor[1];
+            data[chave] = valor;
+        }            
+    });
+    return data;
+}
+
 //Variáveis iniciais
-var numPage = 1,
+let numPage = 1,
     qntPage = 20,
     Xmlhttp = new XMLHttpRequest(),
     arqJsonProd = "../../project/files/mock-products.json",
-    getParamUrl = getParamUrl(),
+    getParamUrl = getParameterUrl(),
     filter = "valor-desc",
     urlInitial = true;
     
@@ -24,37 +42,53 @@ if(getParamUrl.hasOwnProperty('q')){
         numPage = getParamUrl.page;
 } 
 
-//Função que inicia a sessão de produtos.
-setStorageListProd();
-
 //Função start para as funcinalidades de filtro e paginação
-function getStartListProd(filter, numPage){
+const getStartListProd = (filter, numPage) => {
+    
+    document.getElementById("bg-loader").style.display = "block";
     objJsonProd = localStorage.getItem('objJsonProd');
     objJsonProd = JSON.parse(objJsonProd).products;
     orderFilterJson(objJsonProd, filter, numPage);
-    setUrlFilter(filter, numPage); 
+    setUrlFilter(filter, numPage);    
+    document.getElementById("bg-loader").style.display = "none";
 }
 
-//Faz leitura do arquivo json e salva a lista de produtos em sessão
-function setStorageListProd(){ 
-
-    Xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            localStorage.setItem("objJsonProd", this.responseText);
-            getStartListProd(filter, numPage);                   
+const request = obj => {
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open(obj.method || "GET", obj.url);
+        if (obj.headers) {
+            Object.keys(obj.headers).forEach(key => {
+                xhr.setRequestHeader(key, obj.headers[key]);
+            });
         }
-    };
-    Xmlhttp.open("GET", arqJsonProd, true);
-    Xmlhttp.send();    
-}    
+        xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(xhr.response);
+                return;
+            }
+            reject(xhr.statusText);
+        };
+        xhr.onerror = () => reject(xhr.statusText);
+        xhr.send(obj.body);
+    });
+};
 
+request({url: arqJsonProd, method: 'GET'})
+    .then(data => {
+        localStorage.setItem("objJsonProd", data);
+        getStartListProd(filter, numPage);  
+    })
+    .catch(error => {
+        console.log(error);
+});
+ 
 //Atualiza os parâmetros na url
-function setUrlFilter(filter, numPage){
+const setUrlFilter = (filter, numPage) => 
     window.history.replaceState('', '', window.location.href.split('?')[0] + "?q=" + filter + "&page=" + numPage);
-}
 
 //Contrutor da listagem de produtos
-function constListProducts(arrProd, numPage) {
+const constListProducts = (arrProd, numPage) => {
 
     var htmlListProd = "",
         targetProd = parseInt(numPage-1) * parseInt(qntPage),
@@ -78,32 +112,14 @@ function constListProducts(arrProd, numPage) {
     document.getElementById("list-products").innerHTML = htmlListProd;
 }
 
-//Busca os parâmetros da url para executar alistagem de produtos
-function getParamUrl(){
-
-    var query = location.search.slice(1);
-    var partes = query.split('&');
-    var data = {};
-
-    partes.forEach(function (parte) {
-        if(parte != ''){
-            var chaveValor = parte.split('=');
-            var chave = chaveValor[0];
-            var valor = chaveValor[1];
-            data[chave] = valor;
-        }            
-    });
-    return data;
-}
-
 //Contrutor da paginação
-function constPaginator(objList, filter, numPage){
+const constPaginator = (objList, filter, numPage) => {
 
-    var qntTotal = Object.keys(objList).length,
+    let qntTotal = Object.keys(objList).length,
         htmlListPag = "",
         contrPag = parseInt(qntTotal-1) / parseInt(qntPage);
         
-    for(var i = 1; i <= Math.ceil(contrPag); i++) {
+    for(let i = 1; i <= Math.ceil(contrPag); i++) {
         if(numPage == i)
             htmlListPag += `<li class="active"><span>` + i + `</span></li>`;
         else
@@ -113,38 +129,44 @@ function constPaginator(objList, filter, numPage){
 }
 
 //Ordena o abjeto de produtos de acordo com o filtro
-function orderFilterJson(objList, filter, numPage){ 
+const orderFilterJson = (objList, filter, numPage) => { 
 
-    var arrFilter = filter.split('-');
+    let arrFilter = filter.split('-');
     objList.sort(dynamicSort(arrFilter));   
-    var arrProd = Object.values(objList);
+    let arrProd = Object.values(objList);
     
     //Construtor da listagem de produtos
     constListProducts(arrProd, numPage);
     
     //Construtor da paginação
     constPaginator(objList, filter, numPage);
+    
+    window.scrollTo(0, 50);
 }
 
 //Ordena o object de produtos conforme os parâmetros passados
-function dynamicSort(arrtFilter) {
+const dynamicSort = arrtFilter => {
 
-    var sortOrder = 1;
+    let sortOrder = 1,
+        result;
+
     if(arrtFilter[0] === "-") {
         sortOrder = -1;
         arrtFilter = arrtFilter.substr(1);
     }
 
-    return function (a,b) {
+    return (a,b) => {
         if(arrtFilter[1] == 'asc')
-            var result = (a[arrtFilter[0]] < b[arrtFilter[0]]) ? -1 : (a[arrtFilter[0]] > b[arrtFilter[0]]) ? 1 : 0;
+            result = (a[arrtFilter[0]] < b[arrtFilter[0]]) ? -1 : (a[arrtFilter[0]] > b[arrtFilter[0]]) ? 1 : 0;
         else
-            var result = (a[arrtFilter[0]] > b[arrtFilter[0]]) ? -1 : (a[arrtFilter[0]] < b[arrtFilter[0]]) ? 1 : 0;
+            result = (a[arrtFilter[0]] > b[arrtFilter[0]]) ? -1 : (a[arrtFilter[0]] < b[arrtFilter[0]]) ? 1 : 0;
         return result * sortOrder;
     }
 }
 
-function numberToReal(numero) {
+//Trata o valor inteiro em reais.
+const numberToReal = numero => {
+
     var numero = numero.toFixed(2).split('.');
     numero[0] = "R$ " + numero[0].split(/(?=(?:...)*$)/).join('.');
     return numero.join(',');

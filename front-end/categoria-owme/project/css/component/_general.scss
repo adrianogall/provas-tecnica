@@ -185,6 +185,10 @@ body{
     }
 }
 
+#products{
+    position: relative;
+}
+
 ul.list-products{
     display: flex;
     flex-wrap: wrap;
