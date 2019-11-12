@@ -1,57 +1,66 @@
 
-/*
-    
-*/
-
+/*###########################################
+    SCRIPT - Prova Técnica | Adriano Gall
+###########################################*/
 
 //Variáveis iniciais
 var numPage = 1,
     qntPage = 20,
-    xmlhttp = new XMLHttpRequest(),
-    url = "../../project/files/mock-products.json",
-    getUrl = getUrl(),
-    filter= "valor-desc";
+    Xmlhttp = new XMLHttpRequest(),
+    arqJsonProd = "../../project/files/mock-products.json",
+    getParamUrl = getParamUrl(),
+    filter = "valor-desc",
+    urlInitial = true;
     
 //Verifica de tem parâmetros de filtros passados na url no carregamento da página
-if(getUrl.hasOwnProperty('q')){  
+if(getParamUrl.hasOwnProperty('q')){  
 
-    filter = getUrl.q;
-    if(getUrl.hasOwnProperty('page'))
-        numPage = getUrl.page;
+    urlInitial = false;
+    filter = getParamUrl.q;
+    window.document.getElementById("change-filter").value = filter;
+    
+    if(getParamUrl.hasOwnProperty('page'))
+        numPage = getParamUrl.page;
 } 
 
-getStartListProd(filter,numPage);
+getStartListProd(filter, numPage);
 
 //Faz leitura do arquivo json e inicia a construção do filtro
 function getStartListProd(filter, numPage){
-
-    xmlhttp.onreadystatechange = function() {
+    
+    Xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             objJsonProd = JSON.parse(this.responseText).products;
             orderFilterJson(objJsonProd, filter, numPage);
         }
     };
 
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+    Xmlhttp.open("GET", arqJsonProd, true);
+    Xmlhttp.send();
+
+    setUrlFilter(filter, numPage);
 }    
+
+function setUrlFilter(filter, numPage){
+    window.history.replaceState('', '', window.location.href.split('?')[0] + "?q=" + filter + "&page=" + numPage);
+}
 
 //Contrutor da listagem de produtos
 function constListProducts(arrProd, numPage) {
 
     var htmlListProd = "",
-        targetProd = parseInt(numPage) * parseInt(qntPage),
+        targetProd = parseInt(numPage-1) * parseInt(qntPage),
         i2 = 0;
 
     for(var i = 0; i < arrProd.length; i++) {
-        if(targetProd < i && i2 < qntPage){
+        if(targetProd <= i && i2 < qntPage){
             htmlListProd += `<li>
                                 <div class="cont">
-                                    <a class="link" href="javascript:void(0)" title="`+arrProd[i].name+`" class="`+arrProd[i].name+`"></a>
-                                    <div class="thumb"><img alt="`+arrProd[i].name+`" title="`+arrProd[i].name+`" src="`+arrProd[i].image+`"></div>
+                                    <a class="link" href="javascript:void(0)" title="` + arrProd[i].name + `" class="` + arrProd[i].name+`"></a>
+                                    <div class="thumb"><img alt="` + arrProd[i].name + `" title="` + arrProd[i].name + `" src="` + arrProd[i].image + `"></div>
                                     <div class="desc">
-                                        <h3>`+arrProd[i].name+`</h3>
-                                        <p> <span>`+arrProd[i].price+`</span></p>
+                                        <h3>` + arrProd[i].name + `</h3>
+                                        <p> <span>R$ ` + numberToReal(arrProd[i].price); + `</span></p>
                                     </div>
                                 </div>
                             </li>`;
@@ -62,7 +71,7 @@ function constListProducts(arrProd, numPage) {
 }
 
 //Busca os parâmetros da url para executar alistagem de produtos
-function getUrl(){
+function getParamUrl(){
 
     var query = location.search.slice(1);
     var partes = query.split('&');
@@ -84,13 +93,13 @@ function constPaginator(objList, filter, numPage){
 
     var qntTotal = Object.keys(objList).length,
         htmlListPag = "",
-        contrPag = parseInt(qntTotal) / parseInt(qntPage);
+        contrPag = parseInt(qntTotal-1) / parseInt(qntPage);
         
-    for(var i = 1; i < contrPag; i++) {
+    for(var i = 1; i <= Math.ceil(contrPag); i++) {
         if(numPage == i)
-            htmlListPag += `<li class="active"><span>`+i+`</span></li>`;
+            htmlListPag += `<li class="active"><span>` + i + `</span></li>`;
         else
-            htmlListPag += `<li><a href="javascript:void(0)" onClick="getStartListProd('`+filter+`',`+i+`);">`+i+`</a></li>`;             
+            htmlListPag += `<li><a href="javascript:void(0)" onClick="getStartListProd('` + filter + `',` + i + `);">` + i + `</a></li>`;             
     }
     document.getElementById("pag-prod-nav").innerHTML = htmlListPag;
 }
@@ -125,4 +134,10 @@ function dynamicSort(arrtFilter) {
             var result = (a[arrtFilter[0]] > b[arrtFilter[0]]) ? -1 : (a[arrtFilter[0]] < b[arrtFilter[0]]) ? 1 : 0;
         return result * sortOrder;
     }
+}
+
+function numberToReal(numero) {
+    var numero = numero.toFixed(2).split('.');
+    numero[0] = "R$ " + numero[0].split(/(?=(?:...)*$)/).join('.');
+    return numero.join(',');
 }
