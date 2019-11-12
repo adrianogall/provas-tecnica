@@ -3,6 +3,7 @@
     SCRIPT - Prova Técnica | Adriano Gall
 ###########################################*/
 
+
 //Variáveis iniciais
 var numPage = 1,
     qntPage = 20,
@@ -23,24 +24,31 @@ if(getParamUrl.hasOwnProperty('q')){
         numPage = getParamUrl.page;
 } 
 
-getStartListProd(filter, numPage);
+//Função que inicia a sessão de produtos.
+setStorageListProd();
 
-//Faz leitura do arquivo json e inicia a construção do filtro
+//Função start para as funcinalidades de filtro e paginação
 function getStartListProd(filter, numPage){
-    
+    objJsonProd = localStorage.getItem('objJsonProd');
+    objJsonProd = JSON.parse(objJsonProd).products;
+    orderFilterJson(objJsonProd, filter, numPage);
+    setUrlFilter(filter, numPage); 
+}
+
+//Faz leitura do arquivo json e salva a lista de produtos em sessão
+function setStorageListProd(){ 
+
     Xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            objJsonProd = JSON.parse(this.responseText).products;
-            orderFilterJson(objJsonProd, filter, numPage);
+            localStorage.setItem("objJsonProd", this.responseText);
+            getStartListProd(filter, numPage);                   
         }
     };
-
     Xmlhttp.open("GET", arqJsonProd, true);
-    Xmlhttp.send();
-
-    setUrlFilter(filter, numPage);
+    Xmlhttp.send();    
 }    
 
+//Atualiza os parâmetros na url
 function setUrlFilter(filter, numPage){
     window.history.replaceState('', '', window.location.href.split('?')[0] + "?q=" + filter + "&page=" + numPage);
 }
