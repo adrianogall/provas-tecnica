@@ -1,5 +1,4 @@
 const { src, dest, parallel } = require('gulp');
-const pug = require('gulp-pug');
 const sass = require('gulp-sass');
 const minifyCSS = require('gulp-csso');
 const concat = require('gulp-concat');

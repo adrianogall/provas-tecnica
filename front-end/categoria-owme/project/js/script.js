@@ -7,15 +7,15 @@
 //Busca os parâmetros da url para executar alistagem de produtos
 const getParameterUrl = () => {
     
-    let query = location.search.slice(1),
-        partes = query.split('&'),
-        data = {};
+    let query = location.search.slice(1);
+    let partes = query.split('&');
+    let data = {};
 
     partes.forEach(parte => {
         if(parte != ''){
-            let chaveValor = parte.split('=') 
-                chave = chaveValor[0],
-                valor = chaveValor[1];
+            let chaveValor = parte.split('='); 
+            let chave = chaveValor[0];
+            let valor = chaveValor[1];
             data[chave] = valor;
         }            
     });
@@ -23,13 +23,13 @@ const getParameterUrl = () => {
 }
 
 //Variáveis iniciais
-let numPage = 1,
-    qntPage = 20,
-    Xmlhttp = new XMLHttpRequest(),
-    arqJsonProd = "../../project/files/mock-products.json",
-    getParamUrl = getParameterUrl(),
-    filter = "valor-desc",
-    urlInitial = true;
+let numPage = 1;
+const  qntPage = 20;
+let Xmlhttp = new XMLHttpRequest();
+let arqJsonProd = "../../project/files/mock-products.json";
+let getParamUrl = getParameterUrl();
+let filter = "valor-desc";
+let urlInitial = true;
     
 //Verifica de tem parâmetros de filtros passados na url no carregamento da página
 if(getParamUrl.hasOwnProperty('q')){  
