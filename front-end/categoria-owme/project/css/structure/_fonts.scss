@@ -1,0 +1,23 @@
+//FONTS
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/GothamRegular.eot');
+  src: url('../fonts/GothamRegular.eot') format('embedded-opentype'),
+       url('../fonts/GothamRegular.woff2') format('woff2'),
+       url('../fonts/GothamRegular.woff') format('woff'),
+       url('../fonts/GothamRegular.ttf') format('truetype'),
+       url('../fonts/GothamRegular.svg#GothamRegular') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/GothamBold.eot');
+  src: url('../fonts/GothamBold.eot') format('embedded-opentype'),
+       url('../fonts/GothamBold.woff2') format('woff2'),
+       url('../fonts/GothamBold.woff') format('woff'),
+       url('../fonts/GothamBold.ttf') format('truetype'),
+       url('../fonts/GothamBold.svg#GothamBold') format('svg');
+font-weight: bold;
+font-style: normal;
+}

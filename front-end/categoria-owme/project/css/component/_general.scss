@@ -1,53 +1,6 @@
 @import "../helpers/reset";
 @import "../helpers/variables";
 
-
-//FONTS
-@font-face {
-    font-family: 'Gotham';
-    src: url('../../fonts/GothamRegular.eot');
-    src: url('../../fonts/GothamRegular.eot') format('embedded-opentype'),
-         url('../../fonts/GothamRegular.woff2') format('woff2'),
-         url('../../fonts/GothamRegular.woff') format('woff'),
-         url('../../fonts/GothamRegular.ttf') format('truetype'),
-         url('../../fonts/GothamRegular.svg#GothamRegular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-    font-family: 'Gotham';
-    src: url('../../fonts/GothamBold.eot');
-    src: url('../../fonts/GothamBold.eot') format('embedded-opentype'),
-         url('../../fonts/GothamBold.woff2') format('woff2'),
-         url('../../fonts/GothamBold.woff') format('woff'),
-         url('../../fonts/GothamBold.ttf') format('truetype'),
-         url('../../fonts/GothamBold.svg#GothamBold') format('svg');
-	font-weight: bold;
-	font-style: normal;
-}
-
-@mixin font-transition($time) {
-	-webkit-transition: font-size $time;
-	-moz-transition: font-size $time;
-	-o-transition: font-size $time;
-	transition: font-size $time;
-}
-@mixin background-transition($time,$efect) {
-	-webkit-transition: background-color $time $efect;
-	-moz-transition: background-color $time $efect;
-	-ms-transition: background-color $time $efect;
-	transition: background-color $time $efect;
-}
-@mixin transform-transition($time) {
-    -moz-transition: transform $time;
-    -o-transition: transform $time;
-    transition:transform $time;
-}
-@keyframes rotate {
-	0%    { transform: rotate(0deg); }
-	100%  { transform: rotate(360deg); }
-}
-
 $timeT1: 0.1s;
 
 //TEMPLATE
@@ -55,16 +8,16 @@ html{
 	height: 100%;
 }
 
-body{	
+body{
 	font: 300 14px 'Gotham', Arial, sans-serif;
-	color: $gray;	
-	
+	color: $gray;
+
 }
 
 .base-content{
     width: 100%;
     padding: 20px;
-    
+
     &:first-child{
         padding-top: 5px;
         padding-bottom: 5px;
@@ -94,7 +47,6 @@ body{
                         transition: .5s;
                         text-decoration: none;
                         color: $gray;
-					    @include font-transition($timeT1);
 
                         &:hover,&.active{
                             color: $green;
@@ -103,7 +55,7 @@ body{
                             padding-left: 0;
                         }
                     }
-                    
+
                 }
             }
         }
@@ -116,7 +68,7 @@ body{
 
             a{
                 display: block;
-                
+
                 img{
                     width: 100%;
                     max-width: 93px;
@@ -143,7 +95,6 @@ body{
                         transition: .5s;
                         text-decoration: none;
                         color: $gray;
-					    @include font-transition($timeT1);
 
                         &:hover,&.active{
                             color: $green;
@@ -152,21 +103,21 @@ body{
                             padding-right: 0;
                         }
                     }
-                    
+
                 }
             }
         }
-        
+
     }
 }
 
-#filter{    
+#filter{
     display: flex;
     min-height: 40px;
     margin-bottom: 25px;
     align-items: center;
-    justify-content: space-between;  
-    
+    justify-content: space-between;
+
     h1{
         font: 300 26px Gotham, Arial, sans-serif;
         text-transform: uppercase;
@@ -199,7 +150,7 @@ ul.list-products{
         width: 25%;
         display: block;
         padding: 0;
-        transition: transform-transition(.2s);
+        transition: transform .2s;
 
         .cont{
             padding: 20px;
@@ -224,13 +175,11 @@ ul.list-products{
 
                 h3{
                     font: bold 12px 'Gotham',Arial,Helvetica,sans-serif;
-                    text-transform: uppercase;                    
-					@include font-transition($timeT1);
+                    text-transform: uppercase;
                 }
                 p{
                     font: normal 11px 'Gotham',Arial,Helvetica,sans-serif;
-                    margin-top: 7px;                    
-					@include font-transition($timeT1);
+                    margin-top: 7px;
                 }
             }
         }
@@ -255,7 +204,6 @@ ul.list-products{
             width: 30px;
             margin: 0 2px;
             position: relative;
-            transition:  background-transition($timeT1,'linear');
 
             span{
                 font: 600 11px 'Gotham', Arial, sans-serif !important;
@@ -277,8 +225,6 @@ ul.list-products{
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
-                
-                @include font-transition($timeT1);
 
                 &:hover,&.active{
                     color: $green;
