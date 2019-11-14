@@ -40,9 +40,9 @@
 		svg:   "#{$file-path}.svg##{$svgID}" format("svg")
 	);
 
-	@each $key, $values in $formats-map 
+	@each $key, $values in $formats-map
 	{
-		@if contains($file-formats, $key) 
+		@if contains($file-formats, $key)
 		{
 			$file-path: nth($values, 1);
 			$font-format: nth($values, 2);

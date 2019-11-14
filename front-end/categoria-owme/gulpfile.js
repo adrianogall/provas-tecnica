@@ -53,8 +53,7 @@ function js() {
 
 function watch(){
  gulp.watch('project/js/script.js', js)
- gulp.watch('project/css/style.scss', css)
- gulp.watch('project/css/structure/_responsive.scss', css)
+ gulp.watch('project/css/**/*.scss', css)
 }
 
 exports.clean = clean;
