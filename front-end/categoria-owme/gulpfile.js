@@ -11,6 +11,11 @@ function clean() {
   return del(['build']);
 }
 
+function img() {
+  return gulp.src('project/img/**/*.*')
+    .pipe(gulp.dest('build/img/'))
+}
+
 function fonts() {
   return gulp.src('project/fonts/*.*')
     .pipe(gulp.dest('build/fonts/'))
@@ -48,14 +53,17 @@ function js() {
 
 function watch(){
  gulp.watch('project/js/script.js', js)
+ gulp.watch('project/css/style.scss', css)
+ gulp.watch('project/css/structure/_responsive.scss', css)
 }
 
 exports.clean = clean;
 exports.fonts = fonts;
+exports.img = img;
 exports.js = js;
 exports.css = css;
 exports.html = html;
 exports.json = json;
 exports.default = watch;
-exports.build = gulp.series(clean, gulp.parallel(fonts, html, css, js, json));
-exports.dev = gulp.series(clean, gulp.parallel(fonts, html, css, js, json, watch));
+exports.build = gulp.series(clean, gulp.parallel(img, fonts, html, css, js, json));
+exports.dev = gulp.series(clean, gulp.parallel(img, fonts, html, css, js, json, watch));

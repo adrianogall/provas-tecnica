@@ -138,56 +138,127 @@ body{
 
 #products{
     position: relative;
-}
 
-ul.list-products{
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    li{
-        position: relative;
-        min-height: 150px;
-        width: 25%;
-        display: block;
-        padding: 0;
-        transition: transform .2s;
+    ul#list-products{
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+      li{
+          position: relative;
+          min-height: 150px;
+          width: 25%;
+          display: block;
+          padding: 0;
+          transition: transform .2s, width 0.5s;
+          z-index: 1;
 
-        .cont{
-            padding: 20px;
-            text-align: center;
+          .cont{
+              padding: 20px;
+              text-align: center;
 
-            .link{
-                background: transparent;
-                bottom: 0;
-                left: 0;
-                position: absolute;
-                right: 0;
-                top: 0;
-                z-index: 2;
-            }
-            .thumb{
-                img{
-                    width: 100%;
-                }
-            }
-            .desc{
-                padding-top: 15px;
+              .link{
+                  background: transparent;
+                  bottom: 0;
+                  left: 0;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                  z-index: 2;
+              }
+              .thumb{
+                  img{
+                      width: 100%;
+                  }
+              }
+              .desc{
+                  padding-top: 15px;
 
-                h3{
-                    font: bold 12px 'Gotham',Arial,Helvetica,sans-serif;
-                    text-transform: uppercase;
-                }
-                p{
-                    font: normal 11px 'Gotham',Arial,Helvetica,sans-serif;
-                    margin-top: 7px;
-                }
-            }
-        }
-        &:hover{
-            box-shadow: 0 1px 21px 0 #aaaaaa;
-            transform: scale(1.03);
-        }
+                  h3{
+                      font: bold 12px 'Gotham',Arial,Helvetica,sans-serif;
+                      text-transform: uppercase;
+                  }
+                  p{
+                      font: normal 11px 'Gotham',Arial,Helvetica,sans-serif;
+                      margin-top: 7px;
+                  }
+              }
+          }
+          &:hover{
+              box-shadow: 0 1px 21px 0 #aaaaaa;
+              transform: scale(1.03);
+          }
+      }
     }
+
+    #bg-loader{
+      position: absolute;
+      z-index: 2;
+      width: calc(100% - 40px);
+      height: 100%;
+      left: 20px;
+      align-items: center;
+      position: absolute;
+      background-color: #000000;
+      opacity: 0.5;
+      display: none;
+
+      .lds-ellipsis {
+          position: relative;
+          width: 64px;
+          height: 64px;
+          margin: auto;
+          margin-top: 115px;
+      }
+      .lds-ellipsis div {
+          position: absolute;
+          top: 27px;
+          width: 11px;
+          height: 11px;
+          border-radius: 50%;
+          background: #fff;
+          animation-timing-function: cubic-bezier(0, 1, 1, 0);
+      }
+      .lds-ellipsis div:nth-child(1) {
+          left: 6px;
+          animation: lds-ellipsis1 0.6s infinite;
+      }
+      .lds-ellipsis div:nth-child(2) {
+          left: 6px;
+          animation: lds-ellipsis2 0.6s infinite;
+      }
+      .lds-ellipsis div:nth-child(3) {
+          left: 26px;
+          animation: lds-ellipsis2 0.6s infinite;
+      }
+      .lds-ellipsis div:nth-child(4) {
+          left: 45px;
+          animation: lds-ellipsis3 0.6s infinite;
+      }
+      @keyframes lds-ellipsis1 {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+      }
+      @keyframes lds-ellipsis3 {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(0);
+        }
+      }
+      @keyframes lds-ellipsis2 {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(19px, 0);
+        }
+      }
+  }
 }
 
 #pag-prod{

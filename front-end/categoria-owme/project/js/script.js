@@ -26,7 +26,7 @@ const getParameterUrl = () => {
 let numPage = 1;
 const  qntPage = 20;
 let Xmlhttp = new XMLHttpRequest();
-let arqJsonProd = "files/mock-products.json";
+let arqJsonProd = "../../project/files/mock-products.json";
 let getParamUrl = getParameterUrl();
 let filter = "valor-desc";
 let urlInitial = true;
@@ -45,12 +45,13 @@ if(getParamUrl.hasOwnProperty('q')){
 //Função start para as funcinalidades de filtro e paginação
 const getStartListProd = (filter, numPage) => {
 
-    document.getElementById("bg-loader").style.display = "block";
-    objJsonProd = localStorage.getItem('objJsonProd');
+    let elLoader = document.getElementById("bg-loader");
+    elLoader.style.display = "block";
+    let objJsonProd = localStorage.getItem('objJsonProd');
     objJsonProd = JSON.parse(objJsonProd).products;
     orderFilterJson(objJsonProd, filter, numPage);
     setUrlFilter(filter, numPage);
-    document.getElementById("bg-loader").style.display = "none";
+    setTimeout(function(){ elLoader.style.display = "none"; }, 500);
 }
 
 const request = obj => {
@@ -73,6 +74,7 @@ const request = obj => {
         xhr.send(obj.body);
     });
 };
+
 
 request({url: arqJsonProd, method: 'GET'})
     .then(data => {
