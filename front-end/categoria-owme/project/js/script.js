@@ -27,7 +27,7 @@ const getParameterUrl = () => {
 let currentPage = 1;
 const qntProdPerPage = 20;
 let Xhrhttp = new XMLHttpRequest();
-let urlJsonProd = "../files/mock-products.json";
+let urlJsonProd = "files/mock-products.json";
 let getParamUrl = getParameterUrl();
 let paramsUrlFilters;
 let filter = "price-desc";
@@ -60,7 +60,7 @@ const getStartListProd = (filter, currentPage) => {
   }, 300);
 }
 
-const request = obj => {
+const requestObjProd = obj => {
 
   return new Promise((resolve, reject) => {
 
@@ -88,7 +88,7 @@ const request = obj => {
   });
 };
 
-request({
+requestObjProd({
 
     url: urlJsonProd,
     method: 'GET'
@@ -106,9 +106,9 @@ request({
 const setUrlFilter = (filter, currentPage) => {
 
   paramsUrlFilters = "";
-  if(!firstRefresh){
+  if (!firstRefresh)
     paramsUrlFilters = "?q=" + filter + "&page=" + currentPage
-  }else
+  else
     firstRefresh = false;
 
   window.history.replaceState('', '', window.location.href.split('?')[0] + paramsUrlFilters);
