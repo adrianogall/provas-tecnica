@@ -54,6 +54,7 @@ function js() {
 function watch(){
  gulp.watch('project/js/script.js', js)
  gulp.watch('project/css/**/*.scss', css)
+ gulp.watch('index.html', html)
 }
 
 exports.clean = clean;

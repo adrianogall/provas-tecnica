@@ -60,12 +60,15 @@ body {
               padding-left: 0;
             }
           }
+          &:last-child{
+            display: none;
+          }
         }
       }
     }
 
     .logotipo {
-      width: 100px;
+      width: 110px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -131,8 +134,8 @@ body {
       width: 100%;
       height: 25px;
       padding: 0 10px;
-      background: #fff;
-      border: 1px solid #cccccc;
+      background: $white;
+      border: 1px solid $gray2;
       font-size: 13px;
       text-transform: uppercase;
     }
@@ -219,7 +222,7 @@ body {
       width: 11px;
       height: 11px;
       border-radius: 50%;
-      background: #fff;
+      background: $white;
       animation-timing-function: cubic-bezier(0, 1, 1, 0);
     }
     .lds-ellipsis div:nth-child(1) {
@@ -282,7 +285,7 @@ body {
 
       span {
         font: 600 11px "Gotham", Arial, sans-serif !important;
-        color: #ffffff;
+        color: $white;
       }
       a {
         position: relative;
@@ -315,7 +318,7 @@ body {
         background: #75a683;
 
         a {
-          color: #ffffff;
+          color: $white;
         }
       }
     }

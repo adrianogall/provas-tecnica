@@ -27,14 +27,16 @@ const getParameterUrl = () => {
 let currentPage = 1;
 const qntProdPerPage = 20;
 let Xhrhttp = new XMLHttpRequest();
-let urlJsonProd = "../../project/files/mock-products.json";
+let urlJsonProd = "files/mock-products.json";
 let getParamUrl = getParameterUrl();
 let paramsUrlFilters;
 let filter = "price-desc";
+let firstRefresh = true;
 
 //Verifica se possui parâmetros de filtros passados na url no carregamento da página
 if (getParamUrl.hasOwnProperty('q')) {
 
+  firstRefresh = false;
   const elFilter = window.document.getElementById("change-filter");
   filter = getParamUrl.q;
   elFilter.value = filter;
@@ -73,6 +75,7 @@ const request = obj => {
     Xhrhttp.onload = () => {
 
       if (Xhrhttp.status >= 200 && Xhrhttp.status < 300) {
+
         resolve(Xhrhttp.response);
         return;
       }
@@ -102,7 +105,12 @@ request({
 //Atualiza os parâmetros na url
 const setUrlFilter = (filter, currentPage) => {
 
-  getParamUrl.hasOwnProperty('q') ? paramsUrlFilters = "?q=" + filter + "&page=" + currentPage : paramsUrlFilters = "";
+  paramsUrlFilters = "";
+  if(!firstRefresh){
+    paramsUrlFilters = "?q=" + filter + "&page=" + currentPage
+  }else
+    firstRefresh = false;
+
   window.history.replaceState('', '', window.location.href.split('?')[0] + paramsUrlFilters);
 }
 
@@ -165,9 +173,10 @@ const orderFilterJson = (objListProd, filter, currentPage) => {
   constListProducts(arrListProd, currentPage);
 
   //Construtor da paginação
-  constPaginator(objList, filter, currentPage);
+  constPaginator(objListProd, filter, currentPage);
 
-  window.scrollTo(0, 50);
+  if (!firstRefresh)
+    window.scrollTo(0, 50);
 }
 
 //Ordena o object de produtos conforme o array de parâmetros/filtro passados

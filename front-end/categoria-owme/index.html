@@ -7,7 +7,7 @@
     <meta name=viewport content="width=device-width,initial-scale=1">
     <link rel="canonical" href="https://provatecnica.adriano" />
     <title>Prova Técnica para Front-End</title>
-    <link href="build/css/style.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -15,29 +15,36 @@
 		 <div class="wrapper">
         <input type="checkbox" name="" id="menu-control" class="open-menu">
         <label for="menu-control" class="action-menu">
-          <div class="abrir">abre</div>
-          <div class="fechar">fecha</div>
+          <div class="abrir"></div>
         </label>
         <label class="overlay" for="menu-control"></label>
         <nav class="nav-menu menu">
-          <ul>
-            <li>
-              <a href="javascript:void(0)" class="active" title="Sapatos">SAPATOS</a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" title="Novidade">NOVIDADES</a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" title="Quem Somos">QUEM SOMOS</a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" title="Bazar">BAZAR</a>
-            </li>
-          </ul>
+          <div class="wrapper">
+            <ul>
+              <li>
+                <a href="javascript:void(0)" class="active" title="Sapatos">SAPATOS</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" title="Novidade">NOVIDADES</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" title="Quem Somos">QUEM SOMOS</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" title="Bazar">BAZAR</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" title="Minha Conta">MINHA CONTA</a>
+              </li>
+            </ul>
+            <label for="menu-control" class="action-menu">
+                <div class="fechar"></div>
+            </label>
+          </div>
         </nav>
 
 			<div class="logotipo">
-				<a href="javascrip:void(0)"><img title="Prova Técnica" alt="Prova Técnica" src="img/logo.png"></a>
+				<a href="index.html"><img title="Prova Técnica" alt="Prova Técnica" src="img/logo.png"></a>
 			</div>
 			<div class="find-access">
 				<ul>
@@ -175,6 +182,6 @@
 		</div>
 	</footer>
 
-	<script src="build/js/script.min.js"></script>
+	<script src="js/script.min.js"></script>
 </body>
 </html>
