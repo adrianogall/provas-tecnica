@@ -27,7 +27,7 @@ const getParameterUrl = () => {
 let currentPage = 1;
 const qntProdPerPage = 20;
 let Xhrhttp = new XMLHttpRequest();
-let urlJsonProd = "files/mock-products.json";
+let urlJsonProd = "../files/mock-products.json";
 let getParamUrl = getParameterUrl();
 let paramsUrlFilters;
 let filter = "price-desc";

@@ -1,14 +1,27 @@
 # Prova Técnica para Front-End
 
-Orientação para desenvolvimento e manutenção da aplicação.
+Orientação de desenvolvimento e manutenção da aplicação.
 
-### instalação
+
+### 1 - instalação
+
+Instalar o pacote npm
 
 ```
 npm install
 ```
 
-### Start Server
+### 2 - Start Gulp Watch Dev
+
+Iniciar o Gulp com o Watch
+
+```
+gulp dev
+```
+
+### 3 - Start Server
+
+Iniciar o servidor dentro do repositório build
 
 ```
 cd /build
@@ -18,19 +31,14 @@ cd /build
 http-server
 ```
 
-### Start Gulp Watch Dev
+### 4 - Build Prod Version
 
-```
-gulp dev
-```
-
-### Build Prod Version
+Gerar a build de publicação
 
 ```
 gulp build
 ```
 
-### Tecnologias:
+### TECNOLOGIA:
 
 * ES6 via [babel](https://babeljs.io/) (v7)
-* SASS [sass-loader](https://github.com/jtangelder/sass-loader)

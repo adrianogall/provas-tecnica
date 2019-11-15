@@ -1,187 +1,195 @@
 <!DOCTYPE HTML>
- <html lang="pt-br">
+<html lang="pt-br">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=viewport content="width=device-width,initial-scale=1">
-    <link rel="canonical" href="https://provatecnica.adriano" />
-    <title>Prova Técnica para Front-End</title>
-    <link href="css/style.css" rel="stylesheet"/>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+  <meta http-equiv=X-UA-Compatible content="IE=edge">
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <link rel="canonical" href="https://provatecnica.adriano" />
+  <title>Prova Técnica para Front-End</title>
+  <link href="css/style.css" rel="stylesheet" />
 </head>
+
 <body>
 
-	 <header id="header" class="base-content">
-		 <div class="wrapper">
-        <input type="checkbox" name="" id="menu-control" class="open-menu">
-        <label for="menu-control" class="action-menu">
-          <div class="abrir"></div>
-        </label>
-        <label class="overlay" for="menu-control"></label>
-        <nav class="nav-menu menu">
-          <div class="wrapper">
-            <ul>
-              <li>
-                <a href="javascript:void(0)" class="active" title="Sapatos">SAPATOS</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" title="Novidade">NOVIDADES</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" title="Quem Somos">QUEM SOMOS</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" title="Bazar">BAZAR</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" title="Minha Conta">MINHA CONTA</a>
-              </li>
-            </ul>
-            <label for="menu-control" class="action-menu">
-                <div class="fechar"></div>
-            </label>
+  <header id="header" class="base-content">
+    <div class="wrapper">
+      <input type="checkbox" name="" id="menu-control" class="open-menu">
+      <label for="menu-control" class="action-menu">
+        <div class="abrir"></div>
+      </label>
+      <label class="overlay" for="menu-control"></label>
+      <nav class="nav-menu menu">
+        <div class="wrapper">
+          <ul>
+            <li>
+              <a href="javascript:void(0)" class="active" title="Sapatos">SAPATOS</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" title="Novidade">NOVIDADES</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" title="Quem Somos">QUEM SOMOS</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" title="Bazar">BAZAR</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" title="Minha Conta">MINHA CONTA</a>
+            </li>
+          </ul>
+          <label for="menu-control" class="action-menu">
+            <div class="fechar"></div>
+          </label>
+        </div>
+      </nav>
+
+      <div class="logotipo">
+        <a href="index.html"><img title="Prova Técnica" alt="Prova Técnica" src="img/logo.png"></a>
+      </div>
+      <div class="find-access">
+        <ul>
+          <li>
+            <a href="javascrip:void(0)" title="Buscar">BUSCAR</span></a>
+          </li>
+          <li>
+            <a href="javascrip:void(0)" title="Minha Conta">MINHA CONTA</span></a>
+          </li>
+          <li>
+            <a href="javascrip:void(0)" title="Sacola">SACOLA</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section id="main" class="base-content">
+    <div class="wrapper">
+
+      <div id="filter">
+        <h1> Sapatos</h1>
+        <div class="filter-list">
+          <div class="form-group">
+            <select id="change-filter" onchange="getStartListProd(this.value,1);">
+              <option value="price-desc"> Maior Valor</option>
+              <option value="price-asc"> Menor Valor</option>
+              <option value="name-asc"> A-Z</option>
+              <option value="name-desc"> Z-A</option>
+            </select>
           </div>
-        </nav>
+        </div>
+      </div>
 
-			<div class="logotipo">
-				<a href="index.html"><img title="Prova Técnica" alt="Prova Técnica" src="img/logo.png"></a>
-			</div>
-			<div class="find-access">
-				<ul>
-					<li>
-						<a href="javascrip:void(0)" title="Buscar">BUSCAR</span></a>
-					</li>
-					<li>
-						<a href="javascrip:void(0)" title="Minha Conta">MINHA CONTA</span></a>
-					</li>
-					<li>
-						<a href="javascrip:void(0)" title="Sacola">SACOLA</span></a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</header>
+      <div id="products">
 
-	<section id="main" class="base-content">
-		<div class="wrapper">
+        <div id="bg-loader">
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <ul id="list-products" class="list-products">
+          <li>
+            <div class="cont">
+              <a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
+              <div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
+              <div class="desc">
+                <h3>Pump Isabella Camurça Ferrugem</h3>
+                <p> <span>R$279,90</span></p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
+              <div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
+              <div class="desc">
+                <h3>Pump Isabella Camurça Ferrugem</h3>
+                <p> <span>R$279,90</span></p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
+              <div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
+              <div class="desc">
+                <h3>Pump Isabella Camurça Ferrugem</h3>
+                <p> <span>R$279,90</span></p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
+              <div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
+              <div class="desc">
+                <h3>Pump Isabella Camurça Ferrugem</h3>
+                <p> <span>R$279,90</span></p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
+              <div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
+              <div class="desc">
+                <h3>Pump Isabella Camurça Ferrugem</h3>
+                <p> <span>R$279,90</span></p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
+              <div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
+              <div class="desc">
+                <h3>Pump Isabella Camurça Ferrugem</h3>
+                <p> <span>R$279,90</span></p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
+              <div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
+              <div class="desc">
+                <h3>Pump Isabella Camurça Ferrugem</h3>
+                <p> <span>R$279,90</span></p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
+              <div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
+              <div class="desc">
+                <h3>Pump Isabella Camurça Ferrugem</h3>
+                <p> <span>R$279,90</span></p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-			<div id="filter">
-				<h1> Sapatos</h1>
-				<div class="filter-list">
-					<div class="form-group">
-						<select id="change-filter" onchange="getStartListProd(this.value,1);">
-							<option value="price-desc"> Maior Valor</option>
-							<option value="price-asc"> Menor Valor</option>
-							<option value="name-asc"> A-Z</option>
-							<option value="name-desc"> Z-A</option>
-						</select>
-					</div>
-				</div>
-			</div>
+  <footer id="footer" class="base-content">
+    <div class="wrapper">
+      <div id="pag-prod">
+        <ul id="pag-prod-nav">
+          <li class="active"> <span>1</span></li>
+          <li><a href="" data-value="1">2</a></li>
+          <li><a href="" data-value="2">3</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 
-			<div id="products">
-
-				<div id="bg-loader">
-					<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-				</div>
-				<ul id="list-products" class="list-products">
-					<li>
-						<div class="cont">
-							<a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
-							<div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
-							<div class="desc">
-								<h3>Pump Isabella Camurça Ferrugem</h3>
-								<p> <span>R$279,90</span></p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="cont">
-							<a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
-							<div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
-							<div class="desc">
-								<h3>Pump Isabella Camurça Ferrugem</h3>
-								<p> <span>R$279,90</span></p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="cont">
-							<a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
-							<div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
-							<div class="desc">
-								<h3>Pump Isabella Camurça Ferrugem</h3>
-								<p> <span>R$279,90</span></p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="cont">
-							<a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
-							<div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
-							<div class="desc">
-								<h3>Pump Isabella Camurça Ferrugem</h3>
-								<p> <span>R$279,90</span></p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="cont">
-							<a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
-							<div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
-							<div class="desc">
-								<h3>Pump Isabella Camurça Ferrugem</h3>
-								<p> <span>R$279,90</span></p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="cont">
-							<a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
-							<div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
-							<div class="desc">
-								<h3>Pump Isabella Camurça Ferrugem</h3>
-								<p> <span>R$279,90</span></p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="cont">
-							<a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
-							<div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
-							<div class="desc">
-								<h3>Pump Isabella Camurça Ferrugem</h3>
-								<p> <span>R$279,90</span></p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="cont">
-							<a class="link" href="javascript:void(0)" title="Pump Isabella Camurça Ferrugem" class="Pump Isabella Camurça Ferrugem"></a>
-							<div class="thumb"><img alt="Pump Isabella Camurça Ferrugem" title="Pump Isabella Camurça Ferrugem" src="https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h2c/h00/h00/h00/9036356780062/1069300020005U-01-BASEIMAGE-Lores.jpg"></div>
-							<div class="desc">
-								<h3>Pump Isabella Camurça Ferrugem</h3>
-								<p> <span>R$279,90</span></p>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-
-	<footer id="footer" class="base-content">
-		<div class="wrapper">
-			<div id="pag-prod">
-				<ul id="pag-prod-nav">
-					<li class="active"> <span>1</span></li>
-					<li><a href="" data-value="1">2</a></li>
-					<li><a href="" data-value="2">3</a></li>
-				</ul>
-			</div>
-		</div>
-	</footer>
-
-	<script src="js/script.min.js"></script>
+  <script src="js/script.min.js"></script>
 </body>
+
 </html>
